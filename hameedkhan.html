@@ -1,0 +1,624 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hameed Khan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: full-bleed bands (scrolling banner, sticky header, hero with drifting color, stats strip,
+     timeline, project cards, skills ticker, contact). Each band has its own gutter wrapper (.wrap). */
+  :root {
+    --bg: #f1f5f8;
+    --bg-glass: rgba(241, 245, 248, 0.86);
+    --surface: #ffffff;
+    --fg: #0e1b26;
+    --muted: #4d5f6e;
+    --line: #d3dde5;
+    --accent: #1b4fd6;
+    --accent2: #0a8a7e;
+    --accent-ink: #ffffff;
+    --accent-soft: #e3ebfd;
+    --glow: rgba(27, 79, 214, 0.11);
+    --live: #17875a;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    --p: 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b131a;
+      --bg-glass: rgba(11, 19, 26, 0.86);
+      --surface: #121d27;
+      --fg: #e6eef4;
+      --muted: #9db0bf;
+      --line: #25343f;
+      --accent: #7ea4ff;
+      --accent2: #3fd6c5;
+      --accent-ink: #0b131a;
+      --accent-soft: #19283f;
+      --glow: rgba(126, 164, 255, 0.15);
+      --live: #4fd08f;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b131a;
+    --bg-glass: rgba(11, 19, 26, 0.86);
+    --surface: #121d27;
+    --fg: #e6eef4;
+    --muted: #9db0bf;
+    --line: #25343f;
+    --accent: #7ea4ff;
+    --accent2: #3fd6c5;
+    --accent-ink: #0b131a;
+    --accent-soft: #19283f;
+    --glow: rgba(126, 164, 255, 0.15);
+    --live: #4fd08f;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; padding-block: 0; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 60; }
+  .wrap { max-width: 1124px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.1; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  .mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+
+  /* scrolling banner (also used for the skills ticker) */
+  .marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+  .marquee-track { display: flex; width: max-content; animation: marquee var(--dur, 38s) linear infinite; }
+  .marquee.rev .marquee-track { animation-direction: reverse; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-group { display: flex; flex: none; align-items: center; gap: var(--gap, 32px); padding-right: var(--gap, 32px); white-space: nowrap; }
+  .marquee-group i { width: 6px; height: 6px; background: currentColor; transform: rotate(45deg); opacity: 0.7; flex: none; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .banner { background: linear-gradient(100deg, var(--accent), var(--accent2)); color: var(--accent-ink); min-height: 38px; display: flex; align-items: center; }
+  .banner .marquee { width: 100%; padding-block: 9px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+  .ticker { border-block: 1px solid var(--line); padding-block: 22px; background: var(--surface); }
+  .ticker .marquee { font-family: var(--font-display); font-size: clamp(22px, 3.4vw, 34px); font-weight: 700; letter-spacing: -0.01em; --gap: 40px; --dur: 55s; color: var(--fg); }
+  .ticker .marquee-group i { color: var(--accent); opacity: 1; width: 8px; height: 8px; }
+
+  /* sticky header */
+  .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--bg-glass); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 8px 16px; padding-block: 12px; flex-wrap: wrap; }
+  .top::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transform-origin: 0 50%; transform: scaleX(var(--p)); }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 17px; text-decoration: none; color: var(--fg); }
+  .badge { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: var(--accent-ink); font-size: 14px; font-weight: 800; letter-spacing: 0; }
+  .nav { display: flex; gap: 4px; align-items: center; margin-left: auto; }
+  .nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 999px; }
+  .nav a:hover { color: var(--fg); }
+  .nav a.active { background: var(--accent-soft); color: var(--accent); }
+  .icon-btn { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); display: grid; place-items: center; cursor: pointer; }
+  .icon-btn:hover { border-color: var(--accent); }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 26px 26px; -webkit-mask-image: linear-gradient(180deg, #000 20%, transparent 95%); mask-image: linear-gradient(180deg, #000 20%, transparent 95%); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.28; pointer-events: none; }
+  .blob.a { width: 380px; height: 380px; background: var(--accent); top: -120px; right: 6%; animation: drift 16s ease-in-out infinite alternate; }
+  .blob.b { width: 320px; height: 320px; background: var(--accent2); bottom: -140px; left: 4%; animation: drift 21s ease-in-out infinite alternate-reverse; }
+  @keyframes drift { from { transform: translate(0, 0) scale(1); } to { transform: translate(-50px, 40px) scale(1.15); } }
+  .hero .wrap { position: relative; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 40px; padding-block: 64px 56px; align-items: center; }
+  .hero h1 { font-size: clamp(48px, 9.5vw, 100px); font-weight: 800; margin-top: 14px; }
+  .grad { background: linear-gradient(100deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: var(--accent); -webkit-text-fill-color: transparent; }
+  .hero .role { font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px); font-weight: 500; margin-top: 18px; line-height: 1.25; }
+  .typed { display: flex; align-items: baseline; gap: 8px; margin-top: 14px; font-family: var(--font-mono); font-size: clamp(14px, 2vw, 17px); min-height: 28px; color: var(--accent); }
+  .typed .lead { color: var(--muted); }
+  .typed .txt::after { content: ""; display: inline-block; width: 2px; height: 1.1em; background: currentColor; margin-left: 3px; vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero .lede { color: var(--muted); max-width: 58ch; margin-top: 20px; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 22px; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; border: 1px solid var(--accent); }
+  .btn svg { transition: transform 0.2s; }
+  .btn:hover svg { transform: translateX(3px); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { background: var(--surface); color: var(--accent); }
+  .btn:hover { filter: brightness(1.07); }
+
+  .now { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 22px; box-shadow: 0 18px 50px -24px rgba(14, 27, 38, 0.35); }
+  .now h3 { font-size: 15px; font-weight: 600; letter-spacing: 0; font-family: var(--font-body); }
+  .now ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+  .now li { display: flex; gap: 12px; align-items: baseline; font-size: 15px; }
+  .now .sub { color: var(--muted); font-size: 13px; }
+  .dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--live); flex: none; transform: translateY(-1px); }
+  .dot.live::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: inherit; animation: ping 1.9s ease-out infinite; }
+  .dot.learn { background: var(--accent); }
+  @keyframes ping { from { transform: scale(1); opacity: 0.6; } to { transform: scale(3.2); opacity: 0; } }
+
+  /* load-in for the hero */
+  .rise > * { animation: fadeup 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .rise > *:nth-child(2) { animation-delay: 0.08s; }
+  .rise > *:nth-child(3) { animation-delay: 0.16s; }
+  .rise > *:nth-child(4) { animation-delay: 0.24s; }
+  .rise > *:nth-child(5) { animation-delay: 0.32s; }
+  .rise > *:nth-child(6) { animation-delay: 0.4s; }
+  @keyframes fadeup { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+  /* stats */
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 16px; background: var(--surface); overflow: hidden; margin-bottom: 56px; }
+  .stats > div { padding: 22px 24px; border-right: 1px solid var(--line); }
+  .stats > div:last-child { border-right: 0; }
+  .stats b { display: block; font-family: var(--font-display); font-size: clamp(34px, 5vw, 52px); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stats span { display: block; margin-top: 8px; color: var(--muted); font-size: 14px; }
+
+  /* sections */
+  section { padding-block: 56px; border-top: 1px solid var(--line); scroll-margin-top: 64px; }
+  .sec-head { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 24px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-top: 8px; }
+  .sec-body { min-width: 0; }
+
+  /* experience timeline */
+  .jobs { position: relative; display: grid; padding-left: 30px; }
+  .jobs::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--accent), var(--line)); border-radius: 2px; }
+  .job { position: relative; display: grid; grid-template-columns: minmax(0, 180px) minmax(0, 1fr); gap: 8px 24px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+  .job:first-child { padding-top: 0; }
+  .job:last-child { border-bottom: 0; padding-bottom: 0; }
+  .job::before { content: ""; position: absolute; left: -30px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); }
+  .job:first-child::before { top: 6px; }
+  .job:not(:first-child)::before { top: 28px; }
+  .job.current::before { background: var(--live); border-color: var(--live); }
+  .job.current::after { content: ""; position: absolute; left: -30px; width: 12px; height: 12px; border-radius: 50%; background: var(--live); animation: ping 1.9s ease-out infinite; }
+  .job.current:first-child::after { top: 6px; }
+  .job.current:not(:first-child)::after { top: 28px; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  .status.live { color: var(--live); }
+  .job h3 { font-size: 22px; font-weight: 700; }
+  .job .where { color: var(--muted); font-size: 15px; margin-top: 2px; }
+  .job ul { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+  .job li::marker { color: var(--accent); }
+
+  /* cards with cursor glow */
+  .projects { display: grid; gap: 20px; }
+  .card { position: relative; overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 26px; min-width: 0; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; }
+  .card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), var(--glow), transparent 62%); opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 20px 44px -26px rgba(14, 27, 38, 0.45); }
+  .card:hover::before { opacity: 1; }
+  .card > * { position: relative; }
+  .card h3 { font-size: 22px; font-weight: 700; }
+  .card p { color: var(--muted); margin-top: 10px; max-width: 64ch; }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding: 0; list-style: none; }
+  .tags li { font-size: 13px; font-weight: 500; padding: 6px 13px; border-radius: 999px; background: var(--accent-soft); color: var(--fg); border: 1px solid var(--line); transition: transform 0.2s, border-color 0.2s; }
+  .tags li:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .loop { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 22px; padding: 0; list-style: none; counter-reset: step; }
+  .loop li { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--bg); counter-increment: step; font-size: 14px; min-width: 0; }
+  .loop li::before { content: "Step " counter(step); display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .loop li:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -28px; width: 28px; height: 2px; background: linear-gradient(90deg, var(--accent) 0 40%, transparent 40% 60%, var(--accent) 60%); background-size: 200% 100%; animation: flow 1.2s linear infinite; }
+  @keyframes flow { to { background-position: -200% 0; } }
+  .loop strong { display: block; font-weight: 600; margin-bottom: 2px; }
+  .loop span { color: var(--muted); }
+
+  /* skills */
+  .skills { display: grid; gap: 24px; }
+  .skills h3 { font-size: 15px; font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
+  .skills .tags { margin-top: 10px; }
+  .two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+
+  /* contact */
+  .contact { display: grid; }
+  .row { display: grid; grid-template-columns: minmax(0, 110px) minmax(0, 1fr) auto; gap: 8px 16px; align-items: center; padding-block: 15px; border-bottom: 1px solid var(--line); }
+  .row:last-child { border-bottom: 0; }
+  .row .val { font-size: 17px; font-weight: 500; overflow-wrap: anywhere; }
+  .copy { min-height: 36px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 500 13px var(--font-body); cursor: pointer; }
+  .copy:hover { border-color: var(--accent); }
+  .foot { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+
+  /* scroll-driven entrance, transform only so text is readable at rest */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { animation: lift linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+      @keyframes lift { from { transform: translateY(32px); } to { transform: none; } }
+    }
+  }
+
+  @media (max-width: 860px) {
+    .nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; }
+    .nav a { white-space: nowrap; }
+    .top .wrap > .icon-btn { margin-left: auto; }
+  }
+  @media (max-width: 760px) {
+    .hero .wrap { grid-template-columns: minmax(0, 1fr); padding-block: 40px 36px; gap: 28px; }
+    .sec-head, .job, .two { grid-template-columns: minmax(0, 1fr); }
+    .sec-head { gap: 12px; }
+    .loop { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .loop li:not(:last-child)::after { top: auto; bottom: -22px; right: auto; left: 50%; width: 2px; height: 22px; background: linear-gradient(180deg, var(--accent) 0 40%, transparent 40% 60%, var(--accent) 60%); background-size: 100% 200%; animation-name: flowv; }
+    @keyframes flowv { to { background-position: 0 -200%; } }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stats > div:nth-child(2) { border-right: 0; }
+    .stats > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .row { grid-template-columns: minmax(0, 1fr) auto; }
+    .row .mono { grid-column: 1 / -1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .marquee { -webkit-mask-image: none; mask-image: none; }
+    .marquee-track { animation: none; width: auto; }
+    .marquee-group { flex-wrap: wrap; row-gap: 8px; white-space: normal; }
+    .marquee-group[aria-hidden="true"] { display: none; }
+    .blob, .rise > *, .dot.live::after, .job.current::after, .loop li::after, .typed .txt::after { animation: none !important; }
+    .card, .tags li, .btn svg { transition: none; }
+  }
+</style>
+
+<div class="banner">
+  <div class="marquee" data-items="Shopify store design|TikTok Ads|Meta Ads|Product research|Competitor analysis|Store optimization|Campaign testing|HTML, CSS and JavaScript" style="--dur: 42s; --gap: 28px" aria-label="Skills: Shopify store design, TikTok Ads, Meta Ads, product research, competitor analysis, store optimization, campaign testing, web development"></div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Hameed Khan, top of page"><span class="badge">HK</span>Hameed Khan</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch light or dark theme">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 3v18" ></path><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"></path></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="blob a"></div>
+    <div class="blob b"></div>
+    <div class="wrap">
+      <div class="rise">
+        <p class="mono">Islamabad / Peshawar, Pakistan</p>
+        <h1>Hameed <span class="grad">Khan</span></h1>
+        <p class="role">E-commerce and digital marketing. Shopify storefronts, paid ads, and the web code behind them.</p>
+        <p class="typed"><span class="lead">I work on</span><span class="txt" id="type">Shopify storefronts</span></p>
+        <p class="lede">I design and update Shopify stores, research products and competitors, study ad creatives, and test products with TikTok and Meta campaigns. I focus on practical execution, clear product presentation, and a better shopping experience for customers. I am also building skills in HTML, CSS, JavaScript, Linux, and backend development.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">Get in touch
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          <a class="btn ghost" href="https://linkedin.com/in/hameed-codes" target="_blank" rel="noopener">LinkedIn profile</a>
+        </div>
+      </div>
+
+      <aside class="now rise" aria-label="Current activity">
+        <div>
+          <h3>Currently working with</h3>
+          <ul>
+            <li><span class="dot live"></span><span>Phonecase.pk<br><span class="sub">Shopify and e-commerce tasks</span></span></li>
+            <li><span class="dot live"></span><span>Degionix<br><span class="sub">Remote, e-commerce and digital marketing</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Currently learning</h3>
+          <ul>
+            <li><span class="dot learn"></span><span>HTML, CSS, JavaScript, React</span></li>
+            <li><span class="dot learn"></span><span>Linux and backend development</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="stats reveal" aria-label="At a glance">
+      <div><b data-count="5">5</b><span>Workplaces in e-commerce and trade</span></div>
+      <div><b data-count="2">2</b><span>Active roles right now</span></div>
+      <div><b data-count="3">3</b><span>Shopify store concepts built</span></div>
+      <div><b data-count="2">2</b><span>Ad platforms tested: TikTok and Meta</span></div>
+    </div>
+  </div>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="mono">Experience</p><h2>Where I have worked</h2></div>
+        <div class="sec-body jobs reveal">
+          <article class="job current">
+            <div><span class="status live">Currently working</span></div>
+            <div>
+              <h3>Phonecase.pk</h3>
+              <p class="where">E-commerce / Shopify</p>
+              <ul>
+                <li>Support e-commerce and Shopify store tasks, including storefront updates, product presentation, collections, and store organization.</li>
+                <li>Contribute to product and competitor research and help keep the shopping experience clear and consistent.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job current">
+            <div><span class="status live">Currently working</span></div>
+            <div>
+              <h3>Degionix</h3>
+              <p class="where">E-commerce / Digital Marketing, remote</p>
+              <ul>
+                <li>Support Shopify store work, product research, competitor research, store optimization, and advertising-related tasks.</li>
+                <li>Assist with e-commerce project execution and research for product and promotional activities.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <div><span class="status">Previously worked</span></div>
+            <div>
+              <h3>Ecom Insighter</h3>
+              <p class="where">E-commerce agency</p>
+              <ul>
+                <li>Supported e-commerce and digital marketing activities, including product and competitor research and store-related tasks.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <div><span class="status">Previously worked</span></div>
+            <div>
+              <h3>Hamid E-Commerce</h3>
+              <p class="where">E-commerce agency</p>
+              <ul>
+                <li>Gained practical experience with Shopify-related tasks, product research, store optimization, and e-commerce operations.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="job">
+            <div><span class="status">Previous work</span></div>
+            <div>
+              <h3>Afrdi Import</h3>
+              <p class="where">Previous professional work experience</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="mono">Projects</p><h2>Store builds and ad tests</h2></div>
+        <div class="sec-body projects">
+          <article class="card reveal">
+            <h3>Shopify store projects</h3>
+            <p>Store concepts for home accessories, jewellery, and men's accessories. Each one covered the full storefront, from first banner to product page.</p>
+            <ul class="tags" aria-label="Work covered">
+              <li>Product pages</li><li>Collections</li><li>Navigation</li><li>Banners</li><li>Promotional sections</li><li>Storefront layout</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <h3>Advertising research and testing</h3>
+            <p>I research products and ad creatives, test products with paid campaigns, and watch the results.</p>
+            <ol class="loop" aria-label="Ad testing workflow">
+              <li><strong>Research</strong><span>Products and ad creatives in TikTok Creative Center and Meta Ads Library</span></li>
+              <li><strong>Test</strong><span>E-commerce products run as TikTok and Meta campaigns</span></li>
+              <li><strong>Monitor</strong><span>Campaign results tracked and reviewed</span></li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="marquee rev" data-items="Shopify|Theme customization|Product research|Competitor analysis|TikTok Ads|Meta Ads Manager|Campaign testing|Creative research|Basic SEO|HTML|CSS|JavaScript|React|Linux"></div>
+  </div>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="mono">Skills and tools</p><h2>What I work with</h2></div>
+        <div class="sec-body skills reveal">
+          <div>
+            <h3>E-commerce and Shopify</h3>
+            <ul class="tags">
+              <li>Shopify store design</li><li>Theme customization</li><li>Product pages</li><li>Collections</li><li>Navigation</li><li>Store optimization</li><li>Product listing</li><li>Product research</li><li>Competitor analysis</li><li>Product validation</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Digital marketing</h3>
+            <ul class="tags">
+              <li>TikTok Ads</li><li>Meta Ads Manager</li><li>Campaign testing</li><li>Creative research</li><li>Performance monitoring</li><li>Promotional content</li><li>Basic SEO</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Web and technical</h3>
+            <ul class="tags">
+              <li>HTML</li><li>CSS</li><li>JavaScript (learning)</li><li>React (learning)</li><li>Linux</li><li>VS Code</li><li>Backend development (training)</li><li>AI tools</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Tools</h3>
+            <ul class="tags">
+              <li>Shopify</li><li>Meta Ads Library</li><li>TikTok Creative Center</li><li>Meta Ads Manager</li><li>VS Code</li><li>Linux</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="mono">Background</p><h2>Education and languages</h2></div>
+        <div class="sec-body two">
+          <div class="card reveal">
+            <h3>Education and training</h3>
+            <p>FSc Computer Science<br>SMIT Backend Development, currently enrolled</p>
+          </div>
+          <div class="card reveal">
+            <h3>Languages</h3>
+            <p>Urdu, Pashto, Punjabi, and English (basic conversational)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="reveal"><p class="mono">Contact</p><h2>Let's talk</h2></div>
+        <div class="sec-body contact reveal">
+          <div class="row">
+            <span class="mono">Email</span>
+            <span class="val" id="v-email">hameed.codes@gmail.com</span>
+            <button class="copy" type="button" data-target="v-email">Copy</button>
+          </div>
+          <div class="row">
+            <span class="mono">Phone</span>
+            <span class="val" id="v-phone">03235199428</span>
+            <button class="copy" type="button" data-target="v-phone">Copy</button>
+          </div>
+          <div class="row">
+            <span class="mono">LinkedIn</span>
+            <a class="val" href="https://linkedin.com/in/hameed-codes" target="_blank" rel="noopener">linkedin.com/in/hameed-codes</a>
+            <span></span>
+          </div>
+          <div class="row">
+            <span class="mono">Location</span>
+            <span class="val">Islamabad / Peshawar, Pakistan</span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap">Hameed Khan, e-commerce and digital marketing.</div></footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* scrolling banners: build two identical groups so the loop is seamless */
+  document.querySelectorAll(".marquee[data-items]").forEach(function (m) {
+    var items = m.getAttribute("data-items").split("|");
+    var track = document.createElement("div");
+    track.className = "marquee-track";
+    [0, 1].forEach(function (n) {
+      var g = document.createElement("div");
+      g.className = "marquee-group";
+      if (n === 1) g.setAttribute("aria-hidden", "true");
+      items.forEach(function (t) {
+        var s = document.createElement("span");
+        s.textContent = t;
+        g.appendChild(s);
+        g.appendChild(document.createElement("i"));
+      });
+      track.appendChild(g);
+    });
+    m.appendChild(track);
+  });
+
+  /* theme toggle, remembered when the browser allows it */
+  try {
+    var saved = localStorage.getItem("hk-theme");
+    if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
+  } catch (e) {}
+  document.getElementById("theme").addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    var next = cur === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("hk-theme", next); } catch (e) {}
+  });
+
+  /* scroll progress bar under the header */
+  var ticking = false;
+  function progress() {
+    var h = root.scrollHeight - window.innerHeight;
+    root.style.setProperty("--p", (h > 0 ? window.scrollY / h : 0).toFixed(4));
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(progress); }
+  }, { passive: true });
+  progress();
+
+  /* rotating line in the hero */
+  var words = ["Shopify storefronts", "TikTok and Meta ad tests", "product and competitor research", "websites in HTML, CSS and JavaScript"];
+  var typeEl = document.getElementById("type");
+  if (!reduce && typeEl) {
+    var wi = 0, ci = words[0].length, erasing = true;
+    var tick = function () {
+      var w = words[wi];
+      if (erasing) {
+        ci--;
+        typeEl.textContent = w.slice(0, ci);
+        if (ci <= 0) { erasing = false; wi = (wi + 1) % words.length; setTimeout(tick, 280); return; }
+        setTimeout(tick, 26);
+      } else {
+        var next = words[wi];
+        ci++;
+        typeEl.textContent = next.slice(0, ci);
+        if (ci >= next.length) { erasing = true; setTimeout(tick, 1900); return; }
+        setTimeout(tick, 52);
+      }
+    };
+    setTimeout(tick, 2000);
+  }
+
+  /* count-up for the stats strip */
+  var counters = document.querySelectorAll("[data-count]");
+  function count(el) {
+    var end = parseInt(el.getAttribute("data-count"), 10), t0 = null;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min((ts - t0) / 1000, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if (!reduce && "IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { count(e.target); cio.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    counters.forEach(function (c) { cio.observe(c); });
+  }
+
+  /* highlight the current section in the nav */
+  var links = {};
+  document.querySelectorAll(".nav a").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+  if ("IntersectionObserver" in window) {
+    var nio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && links[e.target.id]) {
+          Object.keys(links).forEach(function (k) { links[k].classList.remove("active"); });
+          links[e.target.id].classList.add("active");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(links).forEach(function (id) { var s = document.getElementById(id); if (s) nio.observe(s); });
+  }
+
+  /* cursor glow on cards */
+  document.querySelectorAll(".card").forEach(function (c) {
+    c.addEventListener("pointermove", function (e) {
+      var r = c.getBoundingClientRect();
+      c.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      c.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
+
+  /* copy buttons */
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var el = document.getElementById(btn.getAttribute("data-target"));
+      var text = el.textContent.trim();
+      function selectIt() {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = "Selected";
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { btn.textContent = "Copied"; }).catch(selectIt);
+      } else { selectIt(); }
+      setTimeout(function () { btn.textContent = "Copy"; }, 1800);
+    });
+  });
+})();
+</script>
+
+</body></html>
