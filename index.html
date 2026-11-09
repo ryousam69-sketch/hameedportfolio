@@ -5,140 +5,189 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hameed Khan | Shopify Store Design and Meta and TikTok Ads</title>
 <meta name="description" content="Hameed Khan designs and optimizes Shopify stores, researches products and competitors, and tests products with Meta Ads and TikTok Ads campaigns.">
+<meta name="theme-color" content="#0e5a47">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hameed Khan | Shopify Stores and Paid Ads">
+<meta property="og:description" content="Shopify store design, product and competitor research, and Meta and TikTok ad testing from one person.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e5a47'/%3E%3Cpath d='M20 18v28M44 18v28M20 32h24' stroke='%23fff' stroke-width='6' stroke-linecap='square' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
+  /* Design tokens. Spacing runs on a 4px baseline, type on a fixed scale (12, 14, 16, 18, 24, 32, 48, 72),
+     radii are 8, 16 and pill. Layout: asymmetric hero, a 12-column services grid with one featured card,
+     generous space between sections. */
   :root {
     --bg: #ffffff;
-    --alt: #f5f6f4;
+    --alt: #f4f6f3;
     --ink: #141a22;
-    --muted: #536070;
+    --muted: #4d5a69;
     --line: #dfe3e8;
     --accent: #0e5a47;
     --accent-dark: #0a4638;
-    --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --accent-soft: #e4efea;
+    --live: #1b7350;
+    --on-accent: #ffffff;
+    --on-accent-muted: rgba(255, 255, 255, 0.84);
+    --shadow: 0 1px 2px rgba(20, 26, 34, 0.06), 0 16px 32px -20px rgba(20, 26, 34, 0.22);
+    --r-sm: 8px;
+    --r-lg: 16px;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, p, ul, ol { margin: 0; }
+  h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
   ul, ol { padding: 0; list-style: none; }
-  a { color: var(--accent); text-underline-offset: 3px; }
-  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: 24px; }
-  .skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 4px; z-index: 100; }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+  a { color: var(--accent); text-underline-offset: 4px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: var(--r-sm); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: 24px; }
+  .skip { position: absolute; left: -9999px; top: 8px; background: var(--ink); color: #fff; padding: 8px 16px; border-radius: var(--r-sm); z-index: 100; }
   .skip:focus { left: 8px; }
 
   /* header */
-  .top { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.96); border-bottom: 1px solid var(--line); }
-  .top .wrap { display: flex; align-items: center; gap: 24px; min-height: 64px; }
-  .brand { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; margin-right: auto; }
-  .nav { display: flex; gap: 22px; }
-  .nav a { color: var(--muted); text-decoration: none; font-size: 14.5px; font-weight: 500; }
+  .top { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.94); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; padding-block: 12px; }
+  .brand { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; margin-right: auto; }
+  .nav { display: flex; gap: 24px; }
+  .nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; padding-block: 4px; }
   .nav a:hover { color: var(--ink); }
+  .nav a.active { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 8px; }
 
-  /* buttons */
-  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 22px; border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid var(--accent); transition: background 0.15s, color 0.15s, border-color 0.15s; }
-  .btn.primary { background: var(--accent); color: #fff; }
-  .btn.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+  /* buttons: pill shape with a faint inner highlight */
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 999px; font-size: 16px; font-weight: 600; text-decoration: none; border: 1px solid var(--accent); transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s; }
+  .btn.primary { background: var(--accent); color: var(--on-accent); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 1px 2px rgba(20, 26, 34, 0.14); }
+  .btn.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-1px); }
   .btn.outline { background: transparent; color: var(--accent); }
-  .btn.outline:hover { background: var(--accent); color: #fff; }
-  .btn.small { min-height: 38px; padding: 0 16px; font-size: 14px; }
+  .btn.outline:hover { background: var(--accent); color: var(--on-accent); }
+  .btn.small { min-height: 40px; padding: 0 16px; font-size: 14px; }
 
   /* hero */
-  .hero { padding-block: 88px 80px; border-bottom: 1px solid var(--line); }
-  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 64px; align-items: start; }
+  .hero { padding-block: 104px 120px; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 80px; align-items: start; }
   .status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); font-weight: 500; }
-  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #2f9e6e; }
-  .hero h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.12; font-weight: 700; letter-spacing: -0.025em; margin-top: 20px; }
-  .hero .lede { margin-top: 22px; font-size: 18px; color: var(--muted); max-width: 56ch; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-  .facts { border: 1px solid var(--line); border-radius: 8px; background: var(--alt); padding: 8px 24px; }
+  .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--live); }
+  .hero h1 { font-size: clamp(40px, 6.4vw, 72px); line-height: 1.04; font-weight: 700; letter-spacing: -0.035em; margin-top: 24px; }
+  .hero .lede { margin-top: 24px; font-size: 18px; color: var(--muted); max-width: 52ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+  .facts { margin-top: 48px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--alt); padding: 8px 28px; box-shadow: var(--shadow); }
   .facts div { padding-block: 16px; border-bottom: 1px solid var(--line); }
   .facts div:last-child { border-bottom: 0; }
   .facts dt { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .facts dd { margin: 4px 0 0; font-size: 15.5px; font-weight: 500; }
-  dl.facts { margin: 0; }
+  .facts dd { margin-top: 4px; font-size: 16px; font-weight: 500; }
 
   /* sections */
-  section { padding-block: 80px; border-bottom: 1px solid var(--line); }
+  section { padding-block: 120px; }
   section.alt { background: var(--alt); }
-  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
-  .head { max-width: 680px; margin-bottom: 44px; }
-  .head h2 { font-size: clamp(28px, 3.6vw, 38px); line-height: 1.18; font-weight: 700; letter-spacing: -0.02em; margin-top: 10px; }
-  .head p { margin-top: 14px; color: var(--muted); font-size: 17px; }
-  h3 { font-size: 19px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+  .head { max-width: 680px; margin-bottom: 56px; }
+  .head h2 { font-size: clamp(32px, 4.4vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; margin-top: 12px; }
+  .head p { margin-top: 16px; color: var(--muted); font-size: 18px; }
+  h3 { font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: -0.02em; }
 
-  .grid { display: grid; gap: 20px; }
-  .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid { display: grid; gap: 24px; }
   .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  .card { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 28px; }
+  .card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px; transition: border-color 0.2s, transform 0.2s; }
   section.alt .card { background: #fff; }
-  .card > p { margin-top: 10px; color: var(--muted); font-size: 15.5px; }
-  .list { margin-top: 16px; display: grid; gap: 8px; font-size: 15px; }
-  .list li { position: relative; padding-left: 18px; }
-  .list li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-  .note { margin-top: 24px; font-size: 14.5px; color: var(--muted); max-width: 70ch; }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card > p, .card div > p { margin-top: 12px; color: var(--muted); font-size: 16px; }
+  .list { margin-top: 20px; display: grid; gap: 8px; font-size: 16px; }
+  .list li { position: relative; padding-left: 20px; }
+  .list li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .note { margin-top: 32px; font-size: 14px; color: var(--muted); max-width: 70ch; }
+  .link { display: inline-block; margin-top: 20px; font-size: 16px; font-weight: 600; text-decoration: none; }
+  .link:hover { text-decoration: underline; }
+  .grid.more { margin-top: 24px; }
+
+  /* services: one featured card, then a looser grid */
+  .svc { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; }
+  .svc > :nth-child(1) { grid-column: span 7; }
+  .svc > :nth-child(2) { grid-column: span 5; }
+  .svc > :nth-child(3), .svc > :nth-child(4), .svc > :nth-child(5) { grid-column: span 4; }
+  .svc > :nth-child(6) { grid-column: 1 / -1; }
+  .card.feature, section.alt .card.feature { background: var(--accent); border-color: var(--accent); color: var(--on-accent); padding: 40px; }
+  .card.feature:hover, section.alt .card.feature:hover { border-color: var(--accent-dark); }
+  .card.feature > p { color: var(--on-accent-muted); }
+  .card.feature .list li::before { background: #fff; }
+  .card.wide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+  .card.wide .list { margin-top: 0; }
 
   /* steps */
-  .step .num { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+  .step { border-top: 2px solid var(--ink); padding-top: 20px; }
+  .step .num { font-size: 14px; font-weight: 600; letter-spacing: 0.06em; color: var(--accent); }
   .step h3 { margin-top: 8px; }
-  .step p { margin-top: 8px; color: var(--muted); font-size: 15.5px; }
-  .step { border-top: 2px solid var(--ink); padding-top: 18px; }
+  .step p { margin-top: 8px; color: var(--muted); }
 
   /* offers */
   .offer { display: flex; flex-direction: column; }
-  .offer .tag { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .offer .tag { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
   .offer .list { flex: 1; }
-  .offer .foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  .offer .foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
 
-  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-  .tags li { font-size: 13.5px; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--alt); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tags li { font-size: 14px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--alt); }
 
   /* experience */
-  .jobs { max-width: 820px; }
-  .job { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 8px 32px; padding-block: 28px; border-top: 1px solid var(--line); }
+  .jobs { max-width: 840px; }
+  .job { display: grid; grid-template-columns: 176px minmax(0, 1fr); gap: 8px 32px; padding-block: 32px; border-top: 1px solid var(--line); }
   .job:last-child { border-bottom: 1px solid var(--line); }
   .when { font-size: 14px; font-weight: 500; color: var(--muted); }
-  .when.now { color: #1f7a54; }
-  .job h3 { font-size: 20px; }
-  .job .where { color: var(--muted); font-size: 15px; margin-top: 2px; }
-  .job ul { margin-top: 12px; display: grid; gap: 8px; font-size: 15.5px; }
-  .job li { position: relative; padding-left: 18px; }
-  .job li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); }
+  .when.now { color: var(--live); }
+  .job h3 { font-size: 24px; }
+  .job .where { color: var(--muted); font-size: 16px; margin-top: 4px; }
+  .job ul { margin-top: 12px; display: grid; gap: 8px; font-size: 16px; }
+  .job li { position: relative; padding-left: 20px; }
+  .job li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); }
 
   /* contact */
   .contact { max-width: 760px; }
-  .row { display: grid; grid-template-columns: 130px minmax(0, 1fr) auto; gap: 8px 16px; align-items: center; padding-block: 16px; border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; gap: 8px 16px; align-items: center; padding-block: 16px; border-top: 1px solid var(--line); }
   .row:last-child { border-bottom: 1px solid var(--line); }
-  .row .label { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-  .row .val { font-size: 17px; font-weight: 500; overflow-wrap: anywhere; }
-  .copy { min-height: 34px; padding: 0 14px; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); font: 500 13px var(--font); cursor: pointer; }
+  .row .label { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .row .val { font-size: 18px; font-weight: 500; overflow-wrap: anywhere; }
+  .copy { min-height: 36px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: 500 14px var(--font); cursor: pointer; transition: border-color 0.15s, color 0.15s; }
   .copy:hover { border-color: var(--accent); color: var(--accent); }
 
-  footer { padding-block: 28px; color: var(--muted); font-size: 14px; }
+  footer { padding-block: 32px; color: var(--muted); font-size: 14px; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
 
   @media (max-width: 900px) {
-    .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-    .g3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero { padding-block: 72px 80px; }
+    .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .facts { margin-top: 24px; }
+    section { padding-block: 88px; }
+    .g3, .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .svc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .svc > :nth-child(n) { grid-column: auto; }
+    .svc > :nth-child(6) { grid-column: 1 / -1; }
+    .card.wide { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  }
+  @media (max-width: 760px) {
+    .nav { order: 3; width: 100%; gap: 20px; overflow-x: auto; padding-bottom: 4px; }
+    .nav a { white-space: nowrap; }
   }
   @media (max-width: 680px) {
-    .wrap { padding-inline: 18px; }
-    .nav { display: none; }
-    .hero { padding-block: 56px 56px; }
-    section { padding-block: 56px; }
-    .g3, .g2, .g4 { grid-template-columns: minmax(0, 1fr); }
+    .wrap { padding-inline: 16px; }
+    .hero { padding-block: 56px 64px; }
+    section { padding-block: 72px; }
+    .head { margin-bottom: 40px; }
+    .g2, .g3, .g4, .svc { grid-template-columns: minmax(0, 1fr); }
     .job { grid-template-columns: minmax(0, 1fr); gap: 4px; }
     .row { grid-template-columns: minmax(0, 1fr) auto; }
     .row .label { grid-column: 1 / -1; }
-    .card { padding: 22px; }
+    .card, .card.feature { padding: 24px; }
   }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .card, .copy { transition: none; }
+    .card:hover, .btn.primary:hover { transform: none; }
+  }
 </style>
 </head>
 <body>
@@ -162,12 +211,12 @@
   <div class="hero" id="top">
     <div class="wrap">
       <div>
-        <p class="status">Available for new Shopify and advertising projects</p>
-        <h1>Shopify stores and paid advertising for e-commerce brands</h1>
-        <p class="lede">I design and optimize Shopify stores, research products and competitors, and test products with Meta Ads and TikTok Ads campaigns. One person covers the store and the ads, so the two work together.</p>
+        <p class="status">Taking on new Shopify and ad projects</p>
+        <h1>I build Shopify stores and run the ads that test them.</h1>
+        <p class="lede">I'm Hameed. I design and tidy up Shopify stores, dig into products and competitors, and test ideas with Meta and TikTok ads. Because one person handles both the store and the ads, the two actually work together.</p>
         <div class="actions">
           <a class="btn primary" href="https://wa.me/message/3HPNKBRLNPNHC1" target="_blank" rel="noopener">Get a quote on WhatsApp</a>
-          <a class="btn outline" href="https://www.upwork.com/freelancers/~01d20e51a207d541e6?mp_source=share" target="_blank" rel="noopener">View my Upwork profile</a>
+          <a class="btn outline" href="https://www.upwork.com/freelancers/~01d20e51a207d541e6?mp_source=share" target="_blank" rel="noopener">See my Upwork profile</a>
         </div>
       </div>
       <dl class="facts">
@@ -179,23 +228,23 @@
     </div>
   </div>
 
-  <section id="services">
+  <section id="services" class="alt">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Services</p>
-        <h2>What I can take on for your store</h2>
-        <p>Choose a single service or hand over the whole job.</p>
+        <h2>What I can do for your store</h2>
+        <p>Pick one service, or hand me the whole job.</p>
       </div>
-      <div class="grid g3">
-        <article class="card">
+      <div class="svc">
+        <article class="card feature">
           <h3>Shopify store design</h3>
-          <p>A clear storefront that shows your products well and makes buying easy.</p>
+          <p>A clear storefront that shows off your products and makes buying simple. This is the core of what I do.</p>
           <ul class="list"><li>Storefront layout and banners</li><li>Navigation and collections</li><li>Product pages and promotional sections</li></ul>
         </article>
         <article class="card">
           <h3>Store optimization</h3>
-          <p>Fix and refresh an existing store so customers find what they need faster.</p>
-          <ul class="list"><li>Theme customization</li><li>Product listing and organization</li><li>Improved shopping experience</li></ul>
+          <p>Fix up a store you already have so customers find things faster.</p>
+          <ul class="list"><li>Theme customization</li><li>Product listing and organization</li><li>A smoother shopping experience</li></ul>
         </article>
         <article class="card">
           <h3>Product research and validation</h3>
@@ -204,39 +253,42 @@
         </article>
         <article class="card">
           <h3>Competitor analysis</h3>
-          <p>See how competing stores present, price and promote the same products.</p>
+          <p>See how other stores present, price and promote the same products.</p>
           <ul class="list"><li>Store and offer comparison</li><li>Product presentation review</li><li>Gaps you can act on</li></ul>
         </article>
         <article class="card">
-          <h3>Meta Ads and TikTok Ads testing</h3>
-          <p>Run test campaigns on real products and read the results.</p>
-          <ul class="list"><li>Test campaign setup</li><li>Results monitoring</li><li>Guidance on what to scale or stop</li></ul>
-        </article>
-        <article class="card">
           <h3>Ad creative research</h3>
-          <p>Find the ad styles already running in your niche.</p>
+          <p>Find the ad styles already working in your niche.</p>
           <ul class="list"><li>TikTok Creative Center</li><li>Meta Ads Library</li><li>Ideas ready for your next ad</li></ul>
+        </article>
+        <article class="card wide">
+          <div>
+            <h3>Meta Ads and TikTok Ads testing</h3>
+            <p>I run test campaigns on real products, then read what the numbers say before more budget goes in.</p>
+            <a class="link" href="#advertising">See how I test ads &rarr;</a>
+          </div>
+          <ul class="list"><li>Test campaign setup</li><li>Results monitoring</li><li>Guidance on what to scale or stop</li></ul>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="advertising" class="alt">
+  <section id="advertising">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Paid advertising</p>
         <h2>Meta Ads and TikTok Ads</h2>
-        <p>I test products on both platforms before more budget goes in, and I base every recommendation on what the campaign results show.</p>
+        <p>I test a product on both platforms before more budget goes in, and every recommendation comes from what the results show.</p>
       </div>
       <div class="grid g2">
         <article class="card">
           <h3>Meta Ads (Facebook and Instagram)</h3>
-          <p>Campaigns built and tracked in Meta Ads Manager, informed by what competitors are already running.</p>
+          <p>Campaigns built and tracked in Meta Ads Manager, shaped by what competitors are already running.</p>
           <ul class="list">
             <li>Competitor and niche ad research in Meta Ads Library</li>
             <li>Test campaign setup in Ads Manager</li>
             <li>Performance monitoring and result reviews</li>
-            <li>Recommendations on what to scale, change or stop</li>
+            <li>Advice on what to scale, change or stop</li>
           </ul>
         </article>
         <article class="card">
@@ -250,32 +302,32 @@
           </ul>
         </article>
       </div>
-      <p class="note">Ad results depend on the product, the offer and the budget. I report what the numbers show and do not promise sales figures.</p>
+      <p class="note">Ad results depend on the product, the offer and the budget. I'll tell you what the numbers show, and I won't promise sales figures.</p>
     </div>
   </section>
 
-  <section id="process">
+  <section id="process" class="alt">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Process</p>
-        <h2>Research first, then build, test and refine</h2>
-        <p>Each step feeds the next, so spending follows the data.</p>
+        <h2>Research first. Then build, test and refine.</h2>
+        <p>Each step feeds the next, so your budget follows the data.</p>
       </div>
       <div class="grid g4">
-        <div class="step"><span class="num">01</span><h3>Research</h3><p>Products, competitors and ad creatives are checked before anything is built.</p></div>
+        <div class="step"><span class="num">01</span><h3>Research</h3><p>I check products, competitors and ad creatives before anything gets built.</p></div>
         <div class="step"><span class="num">02</span><h3>Build</h3><p>The Shopify store is designed around the product and the buyer.</p></div>
         <div class="step"><span class="num">03</span><h3>Test</h3><p>Small Meta and TikTok campaigns show how the product performs.</p></div>
-        <div class="step"><span class="num">04</span><h3>Refine</h3><p>Results are reviewed, the store and ads adjusted, and the next test planned.</p></div>
+        <div class="step"><span class="num">04</span><h3>Refine</h3><p>I review the results, adjust the store and ads, and plan the next test.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="offers" class="alt">
+  <section id="offers">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Work with me</p>
         <h2>Three ways to start</h2>
-        <p>Each project is quoted to its size. Tell me what you need and I will reply with a plan and a price.</p>
+        <p>Every project is quoted by size. Tell me what you need and I'll reply with a plan and a price.</p>
       </div>
       <div class="grid g3">
         <article class="card offer">
@@ -283,27 +335,27 @@
           <h3>Store launch</h3>
           <p>A Shopify store designed and set up for your product or niche.</p>
           <ul class="list"><li>Competitor and product research</li><li>Store design and layout</li><li>Collections, navigation, product pages</li><li>Promotional sections and banners</li></ul>
-          <div class="foot"><span>Custom quote</span><a class="btn outline small" href="https://wa.me/message/3HPNKBRLNPNHC1" target="_blank" rel="noopener">Get a quote</a></div>
+          <div class="foot"><span>Priced per project</span><a class="btn outline small" href="https://wa.me/message/3HPNKBRLNPNHC1" target="_blank" rel="noopener">Quote my store</a></div>
         </article>
         <article class="card offer">
           <span class="tag">Test</span>
           <h3>Ad test sprint</h3>
           <p>Find out whether a product sells before you commit more budget.</p>
           <ul class="list"><li>Product and creative research</li><li>Meta and TikTok test campaigns</li><li>Results monitoring</li><li>Clear next-step advice</li></ul>
-          <div class="foot"><span>Custom quote</span><a class="btn outline small" href="https://wa.me/message/3HPNKBRLNPNHC1" target="_blank" rel="noopener">Get a quote</a></div>
+          <div class="foot"><span>Priced per project</span><a class="btn outline small" href="https://wa.me/message/3HPNKBRLNPNHC1" target="_blank" rel="noopener">Quote my test</a></div>
         </article>
         <article class="card offer">
           <span class="tag">Support</span>
           <h3>Ongoing store care</h3>
           <p>A steady hand on your store and research as you grow.</p>
           <ul class="list"><li>Store updates and optimization</li><li>New product research</li><li>Competitor tracking</li><li>Promotional content support</li></ul>
-          <div class="foot"><span>Custom quote</span><a class="btn outline small" href="https://wa.me/message/3HPNKBRLNPNHC1" target="_blank" rel="noopener">Get a quote</a></div>
+          <div class="foot"><span>Priced per project</span><a class="btn outline small" href="https://wa.me/message/3HPNKBRLNPNHC1" target="_blank" rel="noopener">Quote my support</a></div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="work">
+  <section id="work" class="alt">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Projects</p>
@@ -312,14 +364,14 @@
       <div class="grid g2">
         <article class="card">
           <h3>Shopify store projects</h3>
-          <p>Store concepts for home accessories, jewellery and men's accessories. Each covered the full storefront, from the first banner to the product page.</p>
+          <p>Store concepts for home accessories, jewellery and men's accessories. Each one covered the whole storefront, from the first banner to the product page.</p>
           <ul class="tags" aria-label="Work covered">
             <li>Product pages</li><li>Collections</li><li>Navigation</li><li>Banners</li><li>Promotional sections</li><li>Storefront layout</li>
           </ul>
         </article>
         <article class="card">
           <h3>Advertising research and testing</h3>
-          <p>I research products and ad creatives, test products with paid campaigns on Meta and TikTok, and track the results.</p>
+          <p>I research products and ad creatives, run test campaigns on Meta and TikTok, and track the results.</p>
           <ul class="list"><li><strong>Research:</strong> products and creatives in TikTok Creative Center and Meta Ads Library</li><li><strong>Test:</strong> products run as Meta and TikTok campaigns</li><li><strong>Monitor:</strong> results tracked and reviewed</li></ul>
         </article>
       </div>
@@ -329,11 +381,11 @@
     </div>
   </section>
 
-  <section id="experience" class="alt">
+  <section id="experience">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Experience</p>
-        <h2>Where I have worked</h2>
+        <h2>Where I've worked</h2>
       </div>
       <div class="jobs">
         <article class="job">
@@ -342,8 +394,8 @@
             <h3>Phonecase.pk</h3>
             <p class="where">E-commerce / Shopify</p>
             <ul>
-              <li>Support e-commerce and Shopify store tasks, including storefront updates, product presentation, collections and store organization.</li>
-              <li>Contribute to product and competitor research and help keep the shopping experience clear and consistent.</li>
+              <li>I help run the Shopify store: updating the storefront, setting up collections, and making sure products look right.</li>
+              <li>I also dig into products and competitors, and help keep the shopping experience clear and consistent.</li>
             </ul>
           </div>
         </article>
@@ -353,8 +405,8 @@
             <h3>Degionix</h3>
             <p class="where">E-commerce / Digital Marketing, remote</p>
             <ul>
-              <li>Support Shopify store work, product research, competitor research, store optimization and advertising-related tasks.</li>
-              <li>Assist with e-commerce project execution and research for product and promotional activities.</li>
+              <li>I do Shopify store work, product and competitor research, store optimization, and ad tasks.</li>
+              <li>I help get projects and promotions out the door, with the research behind them.</li>
             </ul>
           </div>
         </article>
@@ -363,7 +415,7 @@
           <div>
             <h3>Ecom Insighter</h3>
             <p class="where">E-commerce agency</p>
-            <ul><li>Supported e-commerce and digital marketing activities, including product and competitor research and store-related tasks.</li></ul>
+            <ul><li>Product and competitor research, store tasks, and digital marketing support.</li></ul>
           </div>
         </article>
         <article class="job">
@@ -371,7 +423,7 @@
           <div>
             <h3>Hamid E-Commerce</h3>
             <p class="where">E-commerce agency</p>
-            <ul><li>Gained practical experience with Shopify tasks, product research, store optimization and e-commerce operations.</li></ul>
+            <ul><li>My first hands-on Shopify work: product research, store optimization, and day-to-day e-commerce operations.</li></ul>
           </div>
         </article>
         <article class="job">
@@ -385,7 +437,7 @@
     </div>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="alt">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Skills and tools</p>
@@ -405,7 +457,7 @@
           <ul class="tags"><li>Meta Ads</li><li>TikTok Ads</li><li>Campaign testing</li><li>Performance monitoring</li><li>Promotional content</li><li>Basic SEO</li></ul>
         </div>
       </div>
-      <div class="grid g2" style="margin-top: 20px;">
+      <div class="grid g2 more">
         <div class="card">
           <h3>Tools</h3>
           <ul class="tags"><li>Shopify</li><li>Meta Ads Manager</li><li>Meta Ads Library</li><li>TikTok Creative Center</li></ul>
@@ -418,22 +470,22 @@
     </div>
   </section>
 
-  <section id="contact" class="alt" style="border-bottom: 0;">
+  <section id="contact">
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Contact</p>
         <h2>Have a product to launch?</h2>
-        <p>Send me what you are selling. I will reply with how I would approach it and what it would cost.</p>
+        <p>Send me what you're selling. I'll reply with how I'd approach it and what it would cost.</p>
       </div>
       <div class="contact">
         <div class="row">
           <span class="label">Email</span>
-          <span class="val" id="v-email">hameed.codes@gmail.com</span>
+          <a class="val" id="v-email" href="mailto:hameed.codes@gmail.com">hameed.codes@gmail.com</a>
           <button class="copy" type="button" data-target="v-email">Copy</button>
         </div>
         <div class="row">
           <span class="label">Phone</span>
-          <span class="val" id="v-phone">03306328883</span>
+          <a class="val" id="v-phone" href="tel:+923306328883">+92 330 6328883</a>
           <button class="copy" type="button" data-target="v-phone">Copy</button>
         </div>
         <div class="row">
@@ -467,6 +519,7 @@
 
 <script>
 (function () {
+  /* copy buttons */
   document.querySelectorAll(".copy").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var el = document.getElementById(btn.getAttribute("data-target"));
@@ -485,6 +538,24 @@
       setTimeout(function () { btn.textContent = "Copy"; }, 1800);
     });
   });
+
+  /* highlight the nav link for the section in view */
+  if ("IntersectionObserver" in window) {
+    var links = {};
+    document.querySelectorAll(".nav a").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && links[e.target.id]) {
+          Object.keys(links).forEach(function (k) { links[k].classList.remove("active"); });
+          links[e.target.id].classList.add("active");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    Object.keys(links).forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) io.observe(s);
+    });
+  }
 })();
 </script>
 </body>
